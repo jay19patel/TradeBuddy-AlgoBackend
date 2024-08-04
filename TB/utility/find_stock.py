@@ -31,7 +31,7 @@ async def process_stock(stock: str) -> tuple:
     status = await analyze_stock(data)
     return stock, status
 
-async def main() -> pd.DataFrame:
+async def main_execution_for_find_stocks() -> pd.DataFrame:
     """Main function to orchestrate the parallel processing."""
     stocks = await get_stocks_list()
     results = []
@@ -52,10 +52,10 @@ async def main() -> pd.DataFrame:
     end_time = time.time()
     print(f"Execution time: {end_time - start_time} seconds")
     
-    df = pd.DataFrame(results, columns=['Stock', 'Status'])
+    df = pd.DataFrame(results, columns=['Stock', 'execution_status'])
     return df
 
-if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    final_results = loop.run_until_complete(main())
-    print(final_results)
+# if __name__ == "__main__":
+#     loop = asyncio.get_event_loop()
+#     final_results = loop.run_until_complete(main())
+#     print(final_results)
