@@ -4,43 +4,38 @@ from TB.utility.find_stock import main_execution_for_find_stocks
 class ABSIndex:
     def __init__(self,nse,fyers,tradebuddy):
         self.trade_counts:int = 0
-        self.open_positions = []
-        self.live_price=None
         self.nse = nse
         self.fyers = fyers
         self.tradebuddy= tradebuddy
+        self.stopmarket_orders = None
+        self.open_positions = None
+        self.self.live_prices=None
 
     def check_existing_open_positions(self):
         # positions = self.fyers.fyers_root.positions().get("netPositions") # for fyers
         positions  = self.tradebuddy.open_positions(today=True)
-        if not positions:
-            self.open_positions = []
+        if positions:
+            self.open_positions = [p["symbol"] for p in positions]
 
-        self.open_positions = [p["symbol"] for p in positions]
         print(f"Open Positions :{self.open_positions}")
 
 
     def fetch_live_price(self):
         # live_price = self.fyers.get_current_ltp(self.open_positions)
-        live_price = {'ACC-EQ': 2435.3, 'SBIN-EQ': 847.85}
-        self.live_price
-        print(f"Live Price:{live_price}")
+        self.live_prices = {'ACC-EQ': 2435.3, 'SBIN-EQ': 847.85}
+        print(f"Live Price:{self.live_prices}")
 
 
     def check_any_stop_order(self):
         # orderbook_data = self.fyers.fyers_root.orderbook()
         # if orderbook_data.get("s") == "ok" and len(orderbook_data.get("orderBook"))>0:
-        orderbook_data = self.tradebuddy.get_orderbook(today=True)
-        if orderbook_data:
-            stopmarket_order = list(filter(lambda item: item.get("order_types") == "stopmarket", orderbook_data))
-            print(orderbook_data)
-
+        stopmarket_orders = self.tradebuddy.get_open_stoporder()
+        # Check Stoporder and cuurent price and if Hit Stop target or Trail
+        if stopmarket_orders:
+            self.stopmarket_orders
         else:
             print("orderbook is emty")
         
-        # check ke database ma koy open order che ke ni te
-
-
 
     
     async def auto_buy_sell(df: pd.DataFrame):
