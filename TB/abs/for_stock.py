@@ -8,16 +8,16 @@ class ABSIndex:
         self.fyers = fyers
         self.tradebuddy= tradebuddy
         self.stopmarket_orders = None
-        self.open_positions = None
-        self.self.live_prices=None
+        self.open_positions_symbol = None
+        self.live_prices=None
 
     def check_existing_open_positions(self):
         # positions = self.fyers.fyers_root.positions().get("netPositions") # for fyers
-        positions  = self.tradebuddy.open_positions(today=True)
+        positions  = self.tradebuddy.open_positions().get("data")
         if positions:
-            self.open_positions = [p["symbol"] for p in positions]
+            self.open_positions_symbol = [p["stock_symbol"] for p in positions]
 
-        print(f"Open Positions :{self.open_positions}")
+        print(f"Open Positions :{self.open_positions_symbol}")
 
 
     def fetch_live_price(self):
@@ -38,27 +38,27 @@ class ABSIndex:
         
 
     
-    async def auto_buy_sell(df: pd.DataFrame):
-        """
-        This method will automatically buy stocks based on the ABS system signals.
+    # async def auto_buy_sell(self,df: pd.DataFrame):
+    #     """
+    #     This method will automatically buy stocks based on the ABS system signals.
 
-        :param df: A pandas DataFrame containing the stock data.
-        :return: None
+    #     :param df: A pandas DataFrame containing the stock data.
+    #     :return: None
 
-        ### The DataFrame 'df' must contain a column named 'execution_status' which will be used to determine the buy/sell signals for the ABS system.
+    #     ### The DataFrame 'df' must contain a column named 'execution_status' which will be used to determine the buy/sell signals for the ABS system.
 
-        """
-        for i,row in df.iterrows():
-            if row['execution_status'] == 'buy':
-                # Buy the stock
-                pass
-            elif row["execution_status"] == "sell":
-                # Sell the stock
-                pass
+    #     """
+    #     for i,row in df.iterrows():
+    #         if row['execution_status'] == 'buy':
+    #             # Buy the stock
+    #             pass
+    #         elif row["execution_status"] == "sell":
+    #             # Sell the stock
+    #             pass
         
 
 
-    async def main_abs_index(self):
-        stocks_data = await main_execution_for_find_stocks()
-        self.auto_buy(stocks_data)
+    # async def main_abs_index(self):
+    #     stocks_data = await main_execution_for_find_stocks()
+    #     self.auto_buy(stocks_data)
         
