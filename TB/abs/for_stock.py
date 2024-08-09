@@ -10,6 +10,7 @@ class ABSIndex:
         self.stopmarket_orders = None
         self.open_positions_symbol = None
         self.live_prices=None
+        self.trailing_before_price = 10 # 100 hoy stoploss to 10 yani ki 90 a trailing thahe
 
     def check_existing_open_positions(self):
         # positions = self.fyers.fyers_root.positions().get("netPositions") # for fyers
@@ -26,13 +27,19 @@ class ABSIndex:
         print(f"Live Price:{self.live_prices}")
 
 
-    def check_any_stop_order(self):
+    def position_trailing(self):
         # orderbook_data = self.fyers.fyers_root.orderbook()
         # if orderbook_data.get("s") == "ok" and len(orderbook_data.get("orderBook"))>0:
         stopmarket_orders = self.tradebuddy.get_open_stoporder()
-        # Check Stoporder and cuurent price and if Hit Stop target or Trail
+
         if stopmarket_orders:
-            self.stopmarket_orders
+            for stop_order in stopmarket_orders:
+                if stop_order["order_side"] == "BUY" and 
+                    (stop_order["target_trigger_price"]  - self.trailing_before_price) <= self.live_prices.get(stop_order["stock_symbol"]):
+                    print("UPDATE BUY ORDER FOR TRAILING")
+                elif stop_order["order_side"] == "SELL" and 
+                    (stop_order["target_trigger_price"]  + self.trailing_before_price) >= self.live_prices.get(stop_order["stock_symbol"]):
+                    print("UPDATE SELL ORDER FOR TRAILING")   
         else:
             print("orderbook is emty")
         
