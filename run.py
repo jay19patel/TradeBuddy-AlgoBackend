@@ -53,7 +53,7 @@ async def execute_tradebuddy_abs():
             raise ValueError("Objects are expired. Please re-initialize the system.")
         
         logging.info("System is up-to-date.")
-        print(await fyers.get_current_ltp(["NSE:POLICYBZR-EQ","NSE:HDFCBANK-EQ"]))
+        await main_abs_system(fyers,nse)
         print("------------------------------------------run-------------------------------------------")
         
     except ValueError as e:

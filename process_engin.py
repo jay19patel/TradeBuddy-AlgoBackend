@@ -28,9 +28,16 @@ async def process_stock(stock, fyers):
     try:
         # historical_data = await add_indicators(fyers.Historical_Data(stock, 5))
         historical_data = None
+
+        # All Funtions for fetchinig stategies
+        ema_task = asyncio.create_task(apply_strategy_ema(df=historical_data, current_price=15))
+        rsi_task = asyncio.create_task(apply_strategy_rsi(df=historical_data, current_price=15))
+
+        ema_result, rsi_result = await asyncio.gather(ema_task, rsi_task)
+        
         strategies = {
-            "ema": await asyncio.create_task(apply_strategy_ema(df=historical_data, current_price=15)),
-            "rsi": await asyncio.create_task(apply_strategy_rsi(df=historical_data, current_price=15)),
+            "ema": ema_result,
+            "rsi": rsi_result,
         }
         stock_result = {
             "stock": stock,
