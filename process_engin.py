@@ -1,11 +1,26 @@
 # from Broker.pre_processing_df import add_indicators
 from Strategies.strategie_1 import apply_strategy_ema,apply_strategy_rsi
-from utils import get_current_datetime,save_results
 import asyncio
 import logging
 import asyncio
+import os 
+import json
+from datetime import datetime
 
-# Set up logging
+
+# -----Utilities-----
+def save_results(stock_results, file_path='data/stock_results.json'):
+    dir_path = os.path.dirname(file_path)
+    if not os.path.exists(dir_path):
+        os.makedirs(dir_path)
+    with open(file_path, 'w') as f:
+        json.dump(stock_results, f, indent=4)
+
+def get_current_datetime():
+    return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+
+# -----Set up logging-----
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 

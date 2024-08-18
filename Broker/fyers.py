@@ -100,16 +100,16 @@ class FyersHelper(fyersModel.FyersModel):
             return None
 
 
-async def main():
-    try:
-        obj = FyersHelper()
-        if not await obj.authentication():
-            obj.get_new_access_token()
-        print(await obj.get_current_ltp(["NSE:POLICYBZR-EQ","NSE:HDFCBANK-EQ"]))
-        print("---")
-    except Exception as e:
-        print(f"Error in main: {e}")
+# async def main():
+#     try:
+#         obj = FyersHelper()
+#         if not await obj.authentication():
+#             obj.get_new_access_token()
+#         print(await obj.get_current_ltp(["NSE:POLICYBZR-EQ","NSE:HDFCBANK-EQ"]))
+#         print("---")
+#     except Exception as e:
+#         print(f"Error in main: {e}")
 
-# Run the asynchronous main function
-if __name__ == "__main__":
-    asyncio.run(main())
+# # Run the asynchronous main function
+# if __name__ == "__main__":
+#     asyncio.run(main())

@@ -1,28 +1,37 @@
 import logging
 import datetime
-from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from app import main_abs_system
+from pytz import timezone
+from process_engin import main_abs_system
+from Broker.fyers import FyersHelper
+from Broker.nse import TradeBuddyNSE
+
+import asyncio
+
 # Set up logging
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    level=logging.INFO
+    level=logging.INFO,
+    filename='data/tb_run.log',
+    filemode='a'
 )
+
 logger = logging.getLogger(__name__)
 
 fyers = None
 nse = None
 todays_date = None
 
-def initialize_system():
+async def initialize_system():
     """
     Initializes the system by setting up database connections and instantiating necessary classes.
     """
     global fyers, nse, todays_date
     try:
         logging.info("Initializing system...")
-        fyers = fyers.FyersHelper()
-        nse = nse.TradeBuddyNSE()
+        fyers = FyersHelper()
+        nse = TradeBuddyNSE()
         todays_date = datetime.date.today()
         logging.info("System initialized successfully.")
         return True
@@ -31,10 +40,11 @@ def initialize_system():
         logging.error(f"Error initializing system: {str(e)}")
         return False
 
-def execute_tradebuddy_abs():
+async def execute_tradebuddy_abs():
     global fyers, nse, todays_date
     if fyers is None and nse is None:
         logging.error("System not initialized. Please call initialize_system() first.")
+        await initialize_system()
         return
     try:
         logging.info("Checking if system is up-to-date...")
@@ -43,15 +53,17 @@ def execute_tradebuddy_abs():
             raise ValueError("Objects are expired. Please re-initialize the system.")
         
         logging.info("System is up-to-date.")
-        main_abs_system(fyers,nse)
+        print(await fyers.get_current_ltp(["NSE:POLICYBZR-EQ","NSE:HDFCBANK-EQ"]))
+        print("------------------------------------------run-------------------------------------------")
         
     except ValueError as e:
         logging.error(f"Error: {str(e)}")
+        raise
     except Exception as e:
         logging.error(f"An unexpected error occurred: {str(e)}")
         raise
 
-def shutdown_system():
+async def shutdown_system():
     """
     Shuts down the system by removing class objects and closing any open connections.
     """
@@ -66,8 +78,8 @@ def shutdown_system():
         logging.error(f"Error shutting down system: {str(e)}")
         raise
 
-def main():
-    scheduler = BlockingScheduler()
+async def main():
+    scheduler = AsyncIOScheduler(timezone=timezone('Asia/Kolkata'))
 
     # Job 1: Initialize system at 9:00 AM, Monday to Friday
     scheduler.add_job(
@@ -79,7 +91,7 @@ def main():
     # Job 2: Execute tradebuddy_abs every 5 minutes from 9:15 AM to 3:15 PM, Monday to Friday
     scheduler.add_job(
         execute_tradebuddy_abs,
-        CronTrigger(day_of_week='mon-fri', hour='9-15', minute='*/5'),
+        CronTrigger(hour='9-15', minute='*/1'),
         id='execute_tradebuddy_abs_job'
     )
 
@@ -93,6 +105,8 @@ def main():
     try:
         logger.info("Scheduler started...")
         scheduler.start()
+        # Keep the scheduler running
+        await asyncio.Event().wait()
     except (KeyboardInterrupt, SystemExit):
         logger.error("Error occurred. Shutting down scheduler...")
         scheduler.shutdown()
@@ -100,4 +114,4 @@ def main():
         logger.info("Scheduler stopped.")
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
