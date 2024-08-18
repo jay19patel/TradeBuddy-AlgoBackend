@@ -1,119 +1,31 @@
 [
     {
-        "stock": "SUPREMEIND",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "DIXON",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "AJANTPHARM",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
         "stock": "IPCALAB",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "BHARATFORG",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "stock": "INDIANB",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "ESCORTS",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "stock": "PHOENIXLTD",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "SOLARINDS",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "KEI",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "POLICYBZR",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "KALYANKJIL",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "JSWENERGY",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "TORNTPOWER",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "SJVN",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "UNOMINDA",
-        "updateddatetime": "2024-08-18 15:19:05",
-        "strategies": {
-            "ema": "BUY",
-            "rsi": "SELL"
-        }
-    },
-    {
-        "stock": "UNIONBANK",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "stock": "CGPOWER",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
@@ -121,7 +33,15 @@
     },
     {
         "stock": "SAIL",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "POLYCAB",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
@@ -129,15 +49,63 @@
     },
     {
         "stock": "NMDC",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "GLAXO",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "stock": "LINDEINDIA",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "BSE",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "ESCORTS",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "NHPC",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "OIL",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "RVNL",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "JSL",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
@@ -145,15 +113,47 @@
     },
     {
         "stock": "BHEL",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "OBEROIRLTY",
-        "updateddatetime": "2024-08-18 15:19:05",
+        "stock": "SUNDARMFIN",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "HINDZINC",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "BDL",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "AUROPHARMA",
+        "updateddatetime": "2024-08-18 15:35:05",
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "SOLARINDS",
+        "updateddatetime": "2024-08-18 15:35:05",
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"

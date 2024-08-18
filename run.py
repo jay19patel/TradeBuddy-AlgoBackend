@@ -3,7 +3,7 @@ import datetime
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from pytz import timezone
-from process_engin import main_abs_system
+from Utilities.strategies_process_engin import main_abs_system
 from Broker.fyers import FyersHelper
 from Broker.nse import TradeBuddyNSE
 

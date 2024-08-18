@@ -1,6 +1,6 @@
 from fyers_apiv3 import fyersModel
 import asyncio
-from config import setting
+from Core.config import setting
 import os
 import pandas as pd
 from datetime import datetime ,timedelta

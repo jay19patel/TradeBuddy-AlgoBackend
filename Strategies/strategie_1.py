@@ -13,3 +13,4 @@ async def apply_strategy_rsi(df, current_price):
     return 'SELL'
 
 
+

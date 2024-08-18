@@ -1,5 +1,9 @@
-# from Broker.pre_processing_df import add_indicators
-from Strategies.strategie_1 import apply_strategy_ema,apply_strategy_rsi
+
+# Custom 
+from Strategies.strategies_result_execution import fetch_stategies_results
+# from Utilities.pre_processing_df import add_indicators
+
+# Inbuild
 import asyncio
 import logging
 import asyncio
@@ -30,15 +34,8 @@ async def process_stock(stock, fyers):
         historical_data = None
 
         # All Funtions for fetchinig stategies
-        ema_task = asyncio.create_task(apply_strategy_ema(df=historical_data, current_price=15))
-        rsi_task = asyncio.create_task(apply_strategy_rsi(df=historical_data, current_price=15))
-
-        ema_result, rsi_result = await asyncio.gather(ema_task, rsi_task)
+        strategies = await fetch_stategies_results(historical_data=historical_data,current_price=15)
         
-        strategies = {
-            "ema": ema_result,
-            "rsi": rsi_result,
-        }
         stock_result = {
             "stock": stock,
             "updateddatetime": get_current_datetime(),
