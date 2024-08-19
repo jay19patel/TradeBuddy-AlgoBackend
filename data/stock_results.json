@@ -2,7 +2,7 @@
     "index": [
         {
             "stock": "NSE:NIFTY50-INDEX",
-            "updateddatetime": "2024-08-19 15:31:25",
+            "updateddatetime": "2024-08-19 15:37:34",
             "current_price": 24572.65,
             "strategies": {
                 "ema": "BUY",
@@ -11,7 +11,7 @@
         },
         {
             "stock": "NSE:NIFTYBANK-INDEX",
-            "updateddatetime": "2024-08-19 15:31:25",
+            "updateddatetime": "2024-08-19 15:37:34",
             "current_price": 50368.35,
             "strategies": {
                 "ema": "BUY",
@@ -21,18 +21,54 @@
     ],
     "stocks": [
         {
-            "stock": "NSE:HINDPETRO-EQ",
-            "updateddatetime": "2024-08-19 15:31:25",
-            "current_price": 387.35,
+            "stock": "NSE:RVNL-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 573.5,
             "strategies": {
                 "ema": "BUY",
                 "rsi": "SELL"
             }
         },
         {
-            "stock": "NSE:LUPIN-EQ",
-            "updateddatetime": "2024-08-19 15:31:25",
-            "current_price": 2068.8,
+            "stock": "NSE:CGPOWER-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 710.55,
+            "strategies": {
+                "ema": "BUY",
+                "rsi": "SELL"
+            }
+        },
+        {
+            "stock": "NSE:KALYANKJIL-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 549.55,
+            "strategies": {
+                "ema": "BUY",
+                "rsi": "SELL"
+            }
+        },
+        {
+            "stock": "NSE:BHEL-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 293.75,
+            "strategies": {
+                "ema": "BUY",
+                "rsi": "SELL"
+            }
+        },
+        {
+            "stock": "NSE:OIL-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 689.55,
+            "strategies": {
+                "ema": "BUY",
+                "rsi": "SELL"
+            }
+        },
+        {
+            "stock": "NSE:NHPC-EQ",
+            "updateddatetime": "2024-08-19 15:37:34",
+            "current_price": 96.19,
             "strategies": {
                 "ema": "BUY",
                 "rsi": "SELL"

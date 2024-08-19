@@ -32,7 +32,8 @@ logger = logging.getLogger(__name__)
 async def process_stock(stock,fyers,live_prices,all_sector_df):
     try:
 
-        strategies = await fetch_stategies_results(fyers=fyers,
+        df= await fyers.historical_data(symbol=stock["fyers_symbol"], timeframe=15)
+        strategies = await fetch_stategies_results(df=df,
                                                    current_price=live_prices,
                                                    stock_info=stock,
                                                    all_sector_df=all_sector_df
@@ -72,7 +73,7 @@ async def main_abs_system(fyers, nse):
                                      fyers=fyers,
                                      live_prices = live_prices.get(row["fyers_symbol"].split(":")[1])
                                      ,all_sector_df=all_sector_df
-                                     ) for index, row in stocks_df.sample(2).iterrows()]
+                                     ) for index, row in stocks_df.sample(6).iterrows()]
         stock_results = await asyncio.gather(*stock_tasks)
 
         # INDEX Pending----------------------------------------------------------------
