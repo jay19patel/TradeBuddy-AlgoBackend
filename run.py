@@ -31,6 +31,7 @@ async def initialize_system():
     try:
         logging.info("Initializing system...")
         fyers = FyersHelper()
+        
         nse = TradeBuddyNSE()
         todays_date = datetime.date.today()
         logging.info("System initialized successfully.")

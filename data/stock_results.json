@@ -1,159 +1,197 @@
 [
     {
-        "stock": "IPCALAB",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:POLYCAB-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 6590.15,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "INDIANB",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:SUPREMEIND-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 5237.35,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "PHOENIXLTD",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:LUPIN-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 2074.15,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "CGPOWER",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:SOLARINDS-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 10463.5,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "SAIL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:AUROPHARMA-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 1513,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "POLYCAB",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:INDIANB-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 553.3,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "NMDC",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:MAHABANK-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 62.4,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "LINDEINDIA",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:OIL-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 690.1,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "BSE",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:GLAXO-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 2945.8,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "ESCORTS",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:JSL-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 711,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "NHPC",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:BDL-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 1336.3,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "OIL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:AJANTPHARM-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 3050.45,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "RVNL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:SJVN-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 141.27,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "JSL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:MAZDOCK-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 4810,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "BHEL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:SUNDARMFIN-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 4068.2,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "SUNDARMFIN",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:LODHA-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 1292.2,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "HINDZINC",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:CUMMINSIND-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 3744,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "BDL",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:TORNTPOWER-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 1717.05,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "AUROPHARMA",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:UNIONBANK-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 120.29,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"
         }
     },
     {
-        "stock": "SOLARINDS",
-        "updateddatetime": "2024-08-18 15:35:05",
+        "stock": "NSE:KEI-EQ",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 4338.9,
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "NSE:NIFTY50-INDEX",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 24571.7,
+        "strategies": {
+            "ema": "BUY",
+            "rsi": "SELL"
+        }
+    },
+    {
+        "stock": "NSE:NIFTYBANK-INDEX",
+        "updateddatetime": "2024-08-19 10:22:07",
+        "current_price": 50402.75,
         "strategies": {
             "ema": "BUY",
             "rsi": "SELL"

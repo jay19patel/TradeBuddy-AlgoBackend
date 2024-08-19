@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     SECRET_KEY:str
     APP_PIN:str
     TOTP_KEY:str
+
     
     class Config:
         env_file = ".env"
