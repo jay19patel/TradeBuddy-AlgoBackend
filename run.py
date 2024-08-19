@@ -31,6 +31,8 @@ async def initialize_system():
     try:
         logging.info("Initializing system...")
         fyers = FyersHelper()
+        if not await fyers.authentication():
+            fyers.get_new_access_token()
         
         nse = TradeBuddyNSE()
         todays_date = datetime.date.today()

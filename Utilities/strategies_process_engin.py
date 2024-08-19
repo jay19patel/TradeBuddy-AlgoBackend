@@ -29,42 +29,64 @@ def get_current_datetime():
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-async def process_stock(stock, fyers,live_prices,stocks_df):
+async def process_stock(stock,fyers,live_prices,all_sector_df):
     try:
-        # historical_data = await add_indicators(fyers.Historical_Data(stock, 5))
-        historical_data = None
-        current_price = live_prices.get(stock.split(":")[1])     
-        # All Funtions for fetchinig stategies
-        strategies = await fetch_stategies_results(historical_data=historical_data,current_price=current_price)
+
+        strategies = await fetch_stategies_results(fyers=fyers,
+                                                   current_price=live_prices,
+                                                   stock_info=stock,
+                                                   all_sector_df=all_sector_df
+                                                   )
         
         stock_result = {
-            "stock": stock,
+            "stock": stock["fyers_symbol"] ,
             "updateddatetime": get_current_datetime(),
-            "current_price":current_price,
+            "current_price":live_prices,
             "strategies": strategies
         }
-        logger.info(f"Processed stock: {stock}")
+        logger.info(f"Processed stock: {stock['fyers_symbol']}")
         return stock_result
     except Exception as e:
-        logger.error(f"Error processing stock: {stock} - {str(e)}")
+        logger.error(f"Error processing stock: {stock['fyers_symbol']} - {str(e)}")
         return None
 
 async def main_abs_system(fyers, nse):
     try:
         logger.info("Starting ABS system")
-        main_indexis = ["NIFTY50","NIFTYBANK"]
+        list_of_index = ["NSE:NIFTY50-INDEX","NSE:NIFTYBANK-INDEX"]
+
+
+        all_sector_df = nse.getNSEIndexList()
+
+        # STOCKS ----------------------------------------------------------------
         stocks_df = nse.getNSEStockList("NIFTY%20MIDCAP150%20MOMENTUM%2050")
-        stocks_symbol_list = stocks_df.sample(20)["symbol"].tolist()
-        stocks_symbol_list.extend(main_indexis)
-        stocks_symbol_list = convert_nse_symbol_to_fyers_symbol(stocks_symbol_list)
+        stocks_df["fyers_symbol"] = stocks_df["symbol"].apply(lambda symbol: f"NSE:{symbol}-EQ")
 
-        live_prices = await fyers.get_current_ltp(stocks_symbol_list)
+        # # Fetch Live Prices
+        live_price_symbol_list = stocks_df["fyers_symbol"].tolist()
+        live_price_symbol_list.extend(list_of_index)
+        live_prices = await fyers.get_current_ltp(live_price_symbol_list)
+        
+        
+        stock_tasks = [process_stock(stock=row,
+                                     fyers=fyers,
+                                     live_prices = live_prices.get(row["fyers_symbol"].split(":")[1])
+                                     ,all_sector_df=all_sector_df
+                                     ) for index, row in stocks_df.iterrows()]
+        stock_results = await asyncio.gather(*stock_tasks)
 
-        tasks = [process_stock(stock, fyers,live_prices,stocks_df) for stock in stocks_symbol_list]
+        # INDEX Pending----------------------------------------------------------------
+        index_tasks = [process_stock(
+                            stock={"fyers_symbol":index_name},
+                            fyers=fyers,
+                            live_prices=live_prices.get(index_name.split(":")[1]),
+                            all_sector_df=all_sector_df
+                            ) for index_name in list_of_index]
 
-        stock_results = await asyncio.gather(*tasks)
+        index_results = await asyncio.gather(*index_tasks)
+        
         logger.info("Finished processing all stocks")
-        save_results(stock_results)
+        save_results({"index":index_results,"stocks":stock_results,})
         logger.info("Results saved successfully")
     except Exception as e:
         logger.error(f"Error in main ABS system - {str(e)}")

@@ -40,6 +40,25 @@ class TradeBuddyNSE:
         else:
             raise Exception(f"Failed to fetch data: {response.status_code} {response.text}")
 
+
+    def getNSEIndexList(self):
+        """ get list of index with some basic infomations"""
+        index_list = [""]
+
+        url = f"https://www.nseindia.com/api/allIndices"
+        response = self.session.get(url, verify=self.ssl_verify)
+        if response.status_code == 200:
+            data = response.json()
+            return pd.DataFrame(data['data'][1:])
+        else:
+            return Exception(f"Failed to fetch data: {response.status_code} {response.text}")
+
+    # def getEquityInformation(self):
+    #     """ get list of stock with some basic infomations"""
+    #     list_of_index = ["NIFTY%2050","NIFTY%20BANK"]
+    #     url = f"https://www.nseindia.com/api/equity-stockIndices?index=NIFTY%2050"
+
+
     def getQuoteInformation(self, StockName):
         """ get single stock infomation """
         url = f"https://www.nseindia.com/api/quote-equity?symbol={StockName}&section=trade_info"
