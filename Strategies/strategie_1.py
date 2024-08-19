@@ -11,13 +11,34 @@ all_sector_df:DataFrame
 """
 
 async def apply_strategy_ema(fyers, current_price,stock_info,all_sector_df):
-    await asyncio.sleep(5)  # use await instead of asyncio.sleep
+     # EMA CORSSOVER
+    df= await fyers.historical_data(symbol=stock_info["fyers_symbol"], timeframe=15)
+    print(df.iloc[-1]["High"],"EMA----------------------",stock_info["fyers_symbol"])
+    # ce_condition = ((df['High'].shift(1) < df['15EMA'].shift(1)) & (current_price > df['15EMA'])
+    #            )
+    # pe_condition = ((df['Low'].shift(1) > df['5EMA'].shift(1)) & (current_price < df['5EMA'])
+    #             )
+    # df['TradSide'] = np.select([ce_condition, pe_condition], ['BUY', 'SELL'], default='None')
+    
+    # TradSide_Status = df.iloc[-1]['TradSide']
+    # print("Status EMA CANDLE : ",TradSide_Status)
     return "BUY"
 
 async def apply_strategy_rsi(fyers, current_price,stock_info,all_sector_df):
-    # Implement RSI strategy logic
-    await asyncio.sleep(4)  # use await instead of asyncio.sleep
-    return 'SELL'
+     # EMA CORSSOVER
+    df= await fyers.historical_data(symbol=stock_info["fyers_symbol"], timeframe=5)
+    print(df.iloc[-1]["High"],"RSI----------------------",stock_info["fyers_symbol"])
+
+
+    # ce_condition = ((df['High'].shift(1) < df['15EMA'].shift(1)) & (current_price > df['15EMA'])
+    #            )
+    # pe_condition = ((df['Low'].shift(1) > df['5EMA'].shift(1)) & (current_price < df['5EMA'])
+    #             )
+    # df['TradSide'] = np.select([ce_condition, pe_condition], ['BUY', 'SELL'], default='None')
+    
+    # TradSide_Status = df.iloc[-1]['TradSide']
+    # print("Status RSI CANDLE : ",TradSide_Status)
+    return "SELL"
 
 
 

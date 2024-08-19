@@ -81,6 +81,7 @@ class FyersHelper(fyersModel.FyersModel):
             "cont_flag": "0"
         }
         response =  await self.history(data=data)
+        print(response["message"])
         if response['s'] == "ok":
             df = pd.DataFrame(response['candles'], columns=['Datetime', 'Open', 'High', 'Low', 'Close', 'Volume'])
             df['Datetime'] = pd.to_datetime(df['Datetime'], unit='s').dt.tz_localize(pytz.utc).dt.tz_convert('Asia/Kolkata').dt.tz_localize(None)

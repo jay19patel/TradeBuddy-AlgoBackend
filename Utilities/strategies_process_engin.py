@@ -72,7 +72,7 @@ async def main_abs_system(fyers, nse):
                                      fyers=fyers,
                                      live_prices = live_prices.get(row["fyers_symbol"].split(":")[1])
                                      ,all_sector_df=all_sector_df
-                                     ) for index, row in stocks_df.iterrows()]
+                                     ) for index, row in stocks_df.sample(2).iterrows()]
         stock_results = await asyncio.gather(*stock_tasks)
 
         # INDEX Pending----------------------------------------------------------------
