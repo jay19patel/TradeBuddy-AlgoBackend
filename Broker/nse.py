@@ -27,7 +27,16 @@ class TradeBuddyNSE:
         self.session.close()
 
     def getNSEStockList(self, indexName):
-        """ get list of stock with some basic infomations"""
+        """ get list of stock with some basic infomations
+
+       'priority', 'symbol', 'identifier', 'series', 'open', 'dayHigh',
+       'dayLow', 'lastPrice', 'previousClose', 'change', 'pChange',
+       'totalTradedVolume', 'totalTradedValue', 'lastUpdateTime', 'yearHigh',
+       'ffmc', 'yearLow', 'nearWKH', 'nearWKL', 'perChange365d', 'date365dAgo',
+       'chart365dPath', 'date30dAgo', 'perChange30d', 'chart30dPath',
+       'chartTodayPath', 'meta', 'isin', 'industry', 'companyName'
+    
+        """
         url = f"https://www.nseindia.com/api/equity-stockIndices?index={indexName}"
         response = self.session.get(url, verify=self.ssl_verify)
         if response.status_code == 200:
@@ -36,7 +45,7 @@ class TradeBuddyNSE:
             df['isin'] = df['meta'].apply(lambda x: x.get('isin') if isinstance(x, dict) else None)
             df['industry'] = df['meta'].apply(lambda x: x.get('industry') if isinstance(x, dict) else None)
             df['companyName'] = df['meta'].apply(lambda x: x.get('companyName') if isinstance(x, dict) else None)
-            return df
+            return df.sort_values(by='pChange')
         else:
             raise Exception(f"Failed to fetch data: {response.status_code} {response.text}")
 

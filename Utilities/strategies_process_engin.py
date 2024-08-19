@@ -1,9 +1,9 @@
 
 # Custom 
 from Strategies.strategies_result_execution import fetch_stategies_results
-# from Utilities.pre_processing_df import add_indicators
+from Utilities.pre_processing_df import AddIndicators
 from Core.config import setting
-from Utilities.fyers_utility import convert_nse_symbol_to_fyers_symbol
+# from Utilities.fyers_utility import convert_nse_symbol_to_fyers_symbol
 # Inbuild
 import asyncio
 import logging
@@ -33,6 +33,8 @@ async def process_stock(stock,fyers,live_prices,all_sector_df):
     try:
 
         df= await fyers.historical_data(symbol=stock["fyers_symbol"], timeframe=15)
+        df = await AddIndicators(df)
+        
         strategies = await fetch_stategies_results(df=df,
                                                    current_price=live_prices,
                                                    stock_info=stock,
@@ -58,11 +60,12 @@ async def main_abs_system(fyers, nse):
 
 
         all_sector_df = nse.getNSEIndexList()
-
+        
         # STOCKS ----------------------------------------------------------------
         stocks_df = nse.getNSEStockList("NIFTY%20MIDCAP150%20MOMENTUM%2050")
         stocks_df["fyers_symbol"] = stocks_df["symbol"].apply(lambda symbol: f"NSE:{symbol}-EQ")
 
+        stocks_df = stocks_df.iloc[[0, 1, -2, -1]]
         # # Fetch Live Prices
         live_price_symbol_list = stocks_df["fyers_symbol"].tolist()
         live_price_symbol_list.extend(list_of_index)
@@ -73,7 +76,7 @@ async def main_abs_system(fyers, nse):
                                      fyers=fyers,
                                      live_prices = live_prices.get(row["fyers_symbol"].split(":")[1])
                                      ,all_sector_df=all_sector_df
-                                     ) for index, row in stocks_df.sample(6).iterrows()]
+                                     ) for index, row in stocks_df.iterrows()]
         stock_results = await asyncio.gather(*stock_tasks)
 
         # INDEX Pending----------------------------------------------------------------
